@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
-    private final ResponseDTO responseDTO;
+    private final ResponseDTO<UserDTO> responseDTO;
 
     @GetMapping("/health")
     public String health() {
@@ -28,7 +28,7 @@ public class UserController {
             String req = userService.saveUser(userDTO);
             return buildResponse(req, userDTO);
         } catch (Exception ex) {
-            return buildErrorResponse(ex);
+            return null;
         }
     }
 
@@ -38,12 +38,14 @@ public class UserController {
             String req = userService.updateUser(userDTO);
             return buildResponse(req, userDTO);
         } catch (Exception ex) {
-            return buildErrorResponse(ex);
+            return null;
         }
     }
 
     @GetMapping("/search/{userId}")
     public String getUserSearch(@PathVariable String userId) {
+
+        System.out.println("user is " + userId);
 
         UserDTO userDTO = userService.getSearchUser(userId);
 
@@ -59,7 +61,7 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity getUser(@PathVariable String userId){
 
-        System.out.println("i am hear");
+        System.out.println(userId);
 
         try {
             UserDTO userDTO = userService.getUser(userId);
@@ -102,10 +104,10 @@ public class UserController {
         }
     }
 
-    private ResponseEntity<ResponseDTO> buildErrorResponse(Exception ex) {
+    private ResponseEntity<ResponseDTO<UserDTO>> buildErrorResponse(Exception ex) {
         responseDTO.setCode(VarList.RSP_ERROR);
         responseDTO.setMessage(ex.getMessage());
-        responseDTO.setContent("wrong Id");
+        responseDTO.setContent(null);
         return new ResponseEntity<>(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
