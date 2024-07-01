@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 public class TicketController {
 
-    private final ResponseDTO responseDTO;
+    private final ResponseDTO<TicketDTO> responseDTO;
     private final TicketService ticketService;
 
 
@@ -49,7 +49,7 @@ public class TicketController {
             System.out.println("user not found");
             responseDTO.setCode(VarList.RSP_ERROR);
             responseDTO.setMessage(ex.getMessage());
-            responseDTO.setContent("wrone Id");
+            responseDTO.setContent(null);
             return new ResponseEntity(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
@@ -84,7 +84,7 @@ public class TicketController {
             System.out.println("user not found");
             responseDTO.setCode(VarList.RSP_ERROR);
             responseDTO.setMessage(ex.getMessage());
-            responseDTO.setContent("wrone Id");
+            responseDTO.setContent(null);
             return new ResponseEntity(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
