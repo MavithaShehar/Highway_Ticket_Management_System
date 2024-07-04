@@ -64,4 +64,14 @@ public class TicketServiceImpl implements TicketService {
 
     }
 
+    @Override
+    public String delete(String ticketNo) {
+        if (ticketRepo.existsById(ticketNo)){
+            ticketRepo.deleteById(ticketNo);
+            return VarList.RSP_SUCCESS;
+        }else {
+            return VarList.RSP_NO_DATA_FOUND;
+        }
+    }
+
 }
