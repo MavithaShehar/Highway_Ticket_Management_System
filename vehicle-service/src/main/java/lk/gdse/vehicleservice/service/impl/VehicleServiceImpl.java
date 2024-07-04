@@ -59,4 +59,14 @@ public class VehicleServiceImpl implements VehicleService {
         }
         return null;
     }
+
+    @Override
+    public String delete(String vehicleId) {
+        if (vehicleRepo.existsById(vehicleId)){
+            vehicleRepo.deleteById(vehicleId);
+            return VarList.RSP_SUCCESS;
+        }else {
+            return VarList.RSP_NO_DATA_FOUND;
+        }
+    }
 }

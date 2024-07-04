@@ -7,4 +7,5 @@ public interface VehicleService {
     String updateVehicle(VehicleDTO vehicleDTO);
     VehicleDTO getVehicle(String vehicleId);
     VehicleDTO getSearchVehicleNo(String vehicleId);
+    public String delete(String vehicleId) ;
 }
