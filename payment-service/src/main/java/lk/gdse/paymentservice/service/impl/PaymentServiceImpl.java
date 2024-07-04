@@ -141,5 +141,15 @@ public class PaymentServiceImpl implements PaymentService {
         return null;
     }
 
+    @Override
+    public String delete(String paymentNo) {
+        if (paymentRepo.existsById(paymentNo)){
+            paymentRepo.deleteById(paymentNo);
+            return VarList.RSP_SUCCESS;
+        }else {
+            return VarList.RSP_NO_DATA_FOUND;
+        }
+    }
+
 
 }

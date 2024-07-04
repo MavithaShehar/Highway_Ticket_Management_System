@@ -6,4 +6,5 @@ public interface PaymentService {
     String savePayment(PaymentDTO paymentDTO);
     String updatePayment(PaymentDTO paymentDTO);
     PaymentDTO getPayment(String paymentNo);
+    public String delete(String paymentNo) ;
 }
