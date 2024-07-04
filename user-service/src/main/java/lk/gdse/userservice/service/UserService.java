@@ -7,4 +7,5 @@ public interface UserService {
     String updateUser(UserDTO userDTO);
     UserDTO getUser(String userId);
     UserDTO getSearchUser(String userId);
+    public String delete(String userId) ;
 }

@@ -63,4 +63,14 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public String delete(String userId) {
+        if (userRepo.existsById(userId)){
+            userRepo.deleteById(userId);
+            return VarList.RSP_SUCCESS;
+        }else {
+            return VarList.RSP_NO_DATA_FOUND;
+        }
+    }
+
 }
