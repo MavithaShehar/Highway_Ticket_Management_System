@@ -18,7 +18,7 @@ public class PaymentController {
 
         String req = paymentService.savePayment(paymentDTO);
 
-        return "response is "+ req;
+        return  req;
     }
 
 
