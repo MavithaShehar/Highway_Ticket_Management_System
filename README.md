@@ -36,7 +36,7 @@ Efficient highway ticket management is essential for smooth traffic flow and com
 
 ## Postman Usage
 
-### Customer
+### User
 
 1. **POST - Save User**
     - Endpoint: `http://localhost:8080/api/v1/user`
