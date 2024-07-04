@@ -21,5 +21,13 @@ public class PaymentController {
         return  req;
     }
 
+    @PutMapping
+    public String updatePayment(@RequestBody PaymentDTO paymentDTO) {
+
+        String req = paymentService.updatePayment(paymentDTO);
+
+        return  req;
+    }
+
 
 }
